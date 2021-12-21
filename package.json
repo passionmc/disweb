@@ -1,0 +1,26 @@
+{
+  "name": "discord-web-api",
+  "version": "1.0.0",
+  "description": "A simple & easy2use API for obtaining information about a discord user, discord bot or  discord guild and their use for some purpose on websites! ",
+  "main": "./api/app.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/InvalidLenni/discord-web-api"
+  },
+  "keywords": [
+    "discord-web-api",
+    "discord-user-api"
+  ],
+  "author": "InvalidLenni",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
+  }
+}
