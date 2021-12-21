@@ -5,7 +5,7 @@ A simple &amp; easy2use API for obtaining information about a discord user, disc
 ## How?
 API url: https://disweb.glitch.me
 
-**GET** /v1/user/:USERID/
+**GET** /v1/user/:USERID/\
 Get user infos!
 
 
