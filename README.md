@@ -9,7 +9,7 @@ API url: https://disweb.glitch.me
 Get user infos!
 
 
-**GET** /v1/guild/:GUILDID:
+**GET** /v1/guild/:GUILDID/\
 Get guild infos!
 
 **Make sure that https://discord.com/api/oauth2/authorize?client_id=922865205766135898&permissions=274878221312&scope=bot%20applications.commands (Disweb Bot) on the guild where the infos be getted**
