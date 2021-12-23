@@ -1,7 +1,7 @@
 {
   "name": "disweb",
   "version": "1.0.1",
-  "description": "A simple & easy2use API for obtaining information about a discord user, discord bot or  discord guild and their use for some purpose on websites! ",
+  "description": "A simple & easy2use API for obtaining information about a discord user, discord bot or  discord guild and their use for some purpose on websites!",
   "main": "./api/app.js",
   "scripts": {
     "start": "nodemon"
@@ -12,7 +12,8 @@
   },
   "keywords": [
     "discord-web-api",
-    "discord-user-api"
+    "discord-user-api",
+    "discord-website-api"
   ],
   "author": "InvalidLenni",
   "license": "MIT",
