@@ -1,6 +1,6 @@
 {
-  "name": "discord-web-api",
-  "version": "1.0.0",
+  "name": "disweb",
+  "version": "1.0.1",
   "description": "A simple & easy2use API for obtaining information about a discord user, discord bot or  discord guild and their use for some purpose on websites! ",
   "main": "./api/app.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/InvalidLenni/discord-web-api"
+    "url": "https://github.com/diswebsite/disweb"
   },
   "keywords": [
     "discord-web-api",
