@@ -5,10 +5,12 @@ const express = require("express"),
 
 app.use(cors());
 
+
+
 require("dotenv").config()
 const PORT = process.env.PORT || '80';
 
-// Ratelimiter
+// api things 
 
 
 var corsOptions = {
@@ -33,13 +35,13 @@ app.get("/", cors(corsOptions), (req, res) => {
 
 app.get("/v1", cors(corsOptions), (req, res) => {
     const v1page = (`This is the v1 page from ${name}`);
-    return res.send(v1page)
+    return res.send(v1page) 
 });
 
 // GET USER INFORMATION
 app.get("/v1/user/:userID", cors(corsOptions), (req, res) => {
     client.users.fetch(req.params.userID).then((user) => {
-        const results = ({ username: `${user.username}`, Bot: `${user.bot}`, discriminator: `${user.discriminator}`, url: `${user.displayAvatarURL({ format: "png", size: 4096, dynamic: true })}` });
+        const results = ({ username: `${user.username}`, Bot: `${user.bot}`, discriminator: `${user.discriminator}`, avatar_url: `${user.displayAvatarURL({ format: "png", size: 4096, dynamic: true })}`, creation_date: `${user.createdAt}` });
         return res.send(results);
     });
 });
@@ -47,27 +49,31 @@ app.get("/v1/user/:userID", cors(corsOptions), (req, res) => {
 // THE BOT MUST BE ON THE GUILD FOR FETCH THE GUILD INFORMATIONS!
 app.get("/v1/guild/:guildID", cors(corsOptions), (req, res) => {
     client.guilds.fetch(req.params.guildID).then((guild) => {
-        const results = ({ guildID: `${guild.id}`, guildname: `${guild.name}`, guildavatar: `${guild.iconURL({ size: 4096, dynamic: true })}`, guildrolesize: `${guild.roles.cache.size}`, guilduserssize: `${guild.members.cache.size}`, guildemojisize: `${guild.emojis.cache.size}`, guildownerID: `${guild.ownerID}` });
+        const results = ({ guildID: `${guild.id}`, guildname: `${guild.name}`, guildicon_url: `${guild.iconURL({ size: 4096, dynamic: true })}`, guildroles_count: `${guild.roles.cache.size}`, guildusers_count: `${guild.members.cache.size}`, guildemojis_count: `${guild.emojis.cache.size}`, guildownerID: `${guild.ownerID}`, guildcreation_date: `${guild.createdAt}`});
         return res.send(results);
     });
 });
 
 app.use(function (req, res, next) {
-    res.status(404).send("Sorry, can't find that! the routes is :[/discord/user/:userId]")
+    res.status(404).send("Sorry, can't find that! The route is [/vX/user/:USERID] or [/vX/guild/:GUILDID]")
 });
 
 app.use(function (req, res, next) {
-    res.status(201).send("Missing parm!")
+    res.status(201).send("Missing parm")
 });
 
 
 app.use(function (req, res, next) {
-    res.status(403).send("Missing access!")
+    res.status(403).send("Missing access")
+});
+
+app.use(function (req, res, next) {
+    res.status(500).send("Internal Server Error")
 });
 
 // API START
 client.on("ready", () => {
-    console.log(`${client.user.username} ready!.`)
+    console.log(`The API is now online! Bot: ${client.user.username}`)
 });
 
 app.listen(PORT, console.log(`discord-web-api is listing to`, PORT));
