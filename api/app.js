@@ -29,7 +29,7 @@ const name = require("../package.json").name,
 
 // ROUTES
 app.get("/", cors(corsOptions), (req, res) => {
-    const mainpage = ({"API": `${name}`, "\description": `${description}`, "\nMade by": `${author}`, "\nAPI Version is": `${version}`, "The Github Rep": `${url}` });
+    const mainpage = ({"API": `${name}`, "\description": `${description}`, "Made by": `${author}`, "API Version is": `${version}`, "The Github Rep": `${url}` });
     return res.send(mainpage)
 });
 
@@ -41,7 +41,7 @@ app.get("/v1", cors(corsOptions), (req, res) => {
 // GET USER INFORMATION
 app.get("/v1/user/:userID", cors(corsOptions), (req, res) => {
     client.users.fetch(req.params.userID).then((user) => {
-        const results = ({ username: `${user.username}`, Bot: `${user.bot}`, discriminator: `${user.discriminator}`, avatar_url: `${user.displayAvatarURL({ format: "png", size: 4096, dynamic: true })}`, creation_date: `${user.createdAt}` });
+        const results = ({ username: `${user.username}`, bot: user.bot, discriminator: `${user.discriminator}`, avatar_url: `${user.displayAvatarURL({ format: "png", size: 4096, dynamic: true })}`, creation_date: `${user.createdAt}`, creation_timestamp: user.createdTimestamp});
         return res.send(results);
     });
 });
@@ -49,7 +49,7 @@ app.get("/v1/user/:userID", cors(corsOptions), (req, res) => {
 // THE BOT MUST BE ON THE GUILD FOR FETCH THE GUILD INFORMATIONS!
 app.get("/v1/guild/:guildID", cors(corsOptions), (req, res) => {
     client.guilds.fetch(req.params.guildID).then((guild) => {
-        const results = ({ guildID: `${guild.id}`, guildname: `${guild.name}`, guildicon_url: `${guild.iconURL({ size: 4096, dynamic: true })}`, guildroles_count: `${guild.roles.cache.size}`, guildusers_count: `${guild.members.cache.size}`, guildemojis_count: `${guild.emojis.cache.size}`, guildownerID: `${guild.ownerID}`, guildcreation_date: `${guild.createdAt}`});
+        const results = ({ guildID: `${guild.id}`, guildname: `${guild.name}`, guildicon_url: `${guild.iconURL({ size: 4096, dynamic: true })}`, guildroles_count: `${guild.roles.cache.size}`, guildusers_count: `${guild.members.cache.size}`, guildemojis_count: `${guild.emojis.cache.size}`, guildownerID: `${guild.ownerID}`, guildcreation_date: `${guild.createdAt}`, guildcreation_timestamp: user.createdTimestamp });
         return res.send(results);
     });
 });
