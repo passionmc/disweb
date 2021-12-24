@@ -49,7 +49,7 @@ app.get("/v1/user/:userID", cors(corsOptions), (req, res) => {
 // THE BOT MUST BE ON THE GUILD FOR FETCH THE GUILD INFORMATIONS!
 app.get("/v1/guild/:guildID", cors(corsOptions), (req, res) => {
     client.guilds.fetch(req.params.guildID).then((guild) => {
-        const results = ({ guildID: `${guild.id}`, guildname: `${guild.name}`, guildicon_url: `${guild.iconURL({ size: 4096, dynamic: true })}`, guildroles_count: `${guild.roles.cache.size}`, guildusers_count: `${guild.members.cache.size}`, guildemojis_count: `${guild.emojis.cache.size}`, guildownerID: `${guild.ownerID}`, guildcreation_date: `${guild.createdAt}`, guildcreation_timestamp: user.createdTimestamp });
+        const results = ({ guildID: `${guild.id}`, guildname: `${guild.name}`, guildicon_url: `${guild.iconURL({ size: 4096, dynamic: true })}`, guildroles_count: `${guild.roles.cache.size}`, guildusers_count: `${guild.members.cache.size}`, guildemojis_count: `${guild.emojis.cache.size}`, guildownerID: `${guild.ownerID}`, guildcreation_date: `${guild.createdAt}`, guildcreation_timestamp: guild.createdTimestamp });
         return res.send(results);
     });
 });
