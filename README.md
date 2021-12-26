@@ -3,12 +3,14 @@ A simple &amp; easy2use API for obtaining information about a discord user, disc
 
 
 ## Documentation
-https://invalidlenni.gitbook.io/disweb/
+https://invalidlenni.gitbook.io/disweb/\
+
+## Important links (Disweb)
+[Disweb Discord Server](https://discord.gg/VhSSy2hHbX)\
+[Disweb Discord Bot](https://t.co/OD9a70YwVV)\
 
 ## Related to disweb
-[Disweb Discord Server](https://discord.gg/VhSSy2hHbX)
-[Disweb Discord Bot](https://t.co/OD9a70YwVV)
-[Discord Documentation](https://discord.dev/)
-**Unofficial** **Official** [Discord API Server](https://discord.gg/discord-api)
+[Discord Documentation](https://discord.dev/)\
+**Unofficial** **Official** [Discord API Server](https://discord.gg/discord-api)\
 **Official** [Discord Developers Server](https://discord.gg/discord-developers)
 
