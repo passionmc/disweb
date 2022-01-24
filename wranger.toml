@@ -1,0 +1,8 @@
+name = "foo-stage-auth" 
+type = "javascript" 
+
+
+
+zone_id = "not really a secret but still obsfucated" 
+account_id = "not a secret but sill obsfucated" 
+route = "" # Coming soon
