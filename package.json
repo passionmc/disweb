@@ -18,6 +18,7 @@
   "author": "InvalidLenni",
   "license": "MIT",
   "dependencies": {
+    "node-fetch": "=>2.6.7",
     "cors": "^2.8.5",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
