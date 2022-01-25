@@ -14,11 +14,11 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 Please open a "new issue" under Issues, so that you can create a "bug report". 
-Otherwise, if the security bug is "very dangerous", please write a message to contact@invalidlenni.de!
+Otherwise, if the security bug is "very dangerous", please write a message to security@invalidlenni.de.
 
 ## What happens if my bugreport is rejected?
 I will add only 2 labels and close your bugreport.
 
 ## What happens if my bugreport is accepted?
-I add labels (maximum 4, but mostly 2 - 3) and put it on my ToDo list and on the Known Issues Page (Known Issues Page is coming soon, means not findable / doesn't exist yet)
+I add labels (maximum 4, but mostly 2 - 3) and put it on my ToDo list and on the Known Issues Page (Known Issues Page is coming soon, means not findable / doesn't exist yet).
 
