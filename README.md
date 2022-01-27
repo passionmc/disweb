@@ -1,3 +1,4 @@
+![Discord](https://img.shields.io/discord/913077572252864552?label=Disweb%20API&style=flat-square)
 # Disweb
 A simple &amp; easy2use API for obtaining information about a discord user, discord bot or  discord guild and their use for some purpose on websites! 
 
