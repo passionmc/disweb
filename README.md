@@ -13,7 +13,7 @@ A simple &amp; easy2use API for obtaining information about a discord user, disc
 [Disweb API Discord Bot](https://t.co/OD9a70YwVV)\
 [Disweb API Documentation](https://invalidlenni.gitbook.io/disweb/)
 
-## Not so important links (disweb)
+## Disweb Social Medias
 [Disweb API Twitter](https://twitter.com/DiswebAPI)
 
 
