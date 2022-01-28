@@ -1,8 +1,8 @@
-name = "disweb" 
-type = "javascript" 
+name = "disweb-worker"
+type = "javascript"
 
-
-
-zone_id = "not really a secret but still obsfucated" 
-account_id = "4fe123543fcadde6326f36fa0e43f68d" 
-route = "disweb.lenni-ghost-m.workers.dev" 
+account_id = "4fe123543fcadde6326f36fa0e43f68d"
+workers_dev = true
+route = ""
+zone_id = ""
+compatibility_date = "2022-01-28"
