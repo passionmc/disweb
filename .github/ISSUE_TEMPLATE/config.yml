@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Disweb Documentation
+    email: https://invalidlenni.gitbook.io/disweb/
+    about: Read the docs.
   - name: Security Bug Bounty
     email: security@invalildlenni.de
     about: Please report security vulnerabilities here.
