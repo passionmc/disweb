@@ -1,6 +1,6 @@
 {
   "name": "disweb",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A simple & easy2use API for obtaining information about a discord user, discord bot or  discord guild and their use for some purpose on websites!",
   "main": "./api/app.js",
   "scripts": {
@@ -8,20 +8,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/diswebsite/disweb"
+    "url": "https://github.com/diswebsite/disweb/.git"
+  },
+  "bugs":{
+    "type": "github",
+    "url": "https://github.com/diswebsite/disweb/issues/new"
   },
   "keywords": [
     "discord-web-api",
     "discord-user-api",
     "discord-website-api"
   ],
-  "author": "InvalidLenni",
+  "author": "Diswebsite",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
-    "discord.js": "^12.5.1",
+    "discord.js": "^13.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "randomstring": "^1.2.1"
   }
 }
