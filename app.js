@@ -33,6 +33,33 @@ const name = require("../package.json").name,
     author = require("../package.json").author,
     url = require("../package.json").repository.url;
 
+    /* const apiLimiter = rateLimit({
+        windowMs: 15 * 60 * 1000, // 15 minutes
+        max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+        standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+        legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+    })*/
+
+// Ratelimits
+const userLimiter = rateLimit({
+	windowMs: 60 * 60 * 5, // 5 minutes
+	max: 5, // Limit each IP to 5 user requests per `window` (here, per minute)
+	message:
+		'You are being ratelimited! Try again later.',
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+})
+
+const guildLimiter = rateLimit({
+	windowMs: 60 * 60 * 5, // 5 minutes
+	max: 5, // Limit each IP to 5 user requests per `window` (here, per minute)
+	message:
+		'You are being ratelimited! Try again later.',
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+})
+
+
 // ROUTES
 app.get("/", cors(corsOptions), (req, res) => {
     const mainpage = ({"API": `${name}`, "\description": `${description}`, "Made by": `${author}`, "API Version is": `${version}`, "The Github Rep": `${url}` });
@@ -68,7 +95,7 @@ app.get("/v1", cors(corsOptions), (req, res) => {
 });
 
 // GET USER INFORMATION
-app.get("/v1/user/:userID", cors(corsOptions), (req, res) => {
+app.get("/v1/user/:userID", userLimiter, cors(corsOptions), (req, res) => {
     client.users.fetch(req.params.userID).then((user) => {
         const results = ({ username: `${user.username}`, is_bot: user.bot, discriminator: `${user.discriminator}`, avatar_url: `${user.displayAvatarURL({ format: "png", size: 4096, dynamic: true })}`, banner_url: `${user.bannerURL({ format: "png", dynamic: true })}`, creation_date: `${user.createdAt}`, creation_timestamp: user.createdTimestamp});
         return res.send(results);
@@ -76,20 +103,22 @@ app.get("/v1/user/:userID", cors(corsOptions), (req, res) => {
 });
 
 // THE BOT MUST BE ON THE GUILD FOR FETCH THE GUILD INFORMATIONS!
-app.get("/v1/guild/:guildID", cors(corsOptions), (req, res) => {
+app.get("/v1/guild/:guildID", guildLimiter, cors(corsOptions), (req, res) => {
     client.guilds.fetch(req.params.guildID).then((guild) => {
         const results = ({ guildID: `${guild.id}`, guildname: `${guild.name}`, guildicon_url: `${guild.iconURL({ size: 4096, dynamic: true })}`, guildroles_count: `${guild.roles.cache.size}`, guildusers_count: `${guild.members.cache.size}`, guildemojis_count: `${guild.emojis.cache.size}`, guildownerID: `${guild.ownerID}`, guildcreation_date: `${guild.createdAt}`, guildcreation_timestamp: guild.createdTimestamp});
         return res.send(results);
     });
 });
 
-app.get("/v1/invites/:INVITEURL", cors(corsOptions), (req, res) => {
+app.get("/v1/invites/:INVITEURL", guildLimiter, cors(corsOptions), (req, res) => {
     client.invite.fetch(req.params.INVITEURL).then((invite) => {
         const results = ({ guildID: `${invite.guild.id}`, guildname: `${invite.guild.name}`, guildicon_url: `${invite.guild.iconURL({ size: 4096, dynamic: true })}`, guildroles_count: `${invite.guild.roles.cache.size}`, guildusers_count: `${invite.guild.members.cache.size}`, guildemojis_count: `${invite.guild.emojis.cache.size}`, guildownerID: `${invite.guild.ownerID}`, guildcreation_date: `${invite.guild.createdAt}`, guildcreation_timestamp: invite.guild.createdTimestamp});
         return res.send(results);
     });
 });
 
+
+// Error
 app.use(function (req, res, next) {
     res.status(404).json({ message: '404: Not found', code: 404})
 });
@@ -107,11 +136,12 @@ app.use(function (req, res, next) {
     res.status(500).send({ message: '500: Internal Server Error', code: 500})
 });
 
+
 // API START
 client.on("ready", () => {
     console.log(`The API is now online! Bot: ${client.user.username}`)
 });
 
-app.listen(PORT, console.log(`discord-web-api is listing to`, PORT));
+app.listen(PORT, console.log(`disweb is listing to`, PORT));
 
 client.login(process.env.TOKEN);
