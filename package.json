@@ -1,6 +1,6 @@
 {
   "name": "disweb",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple & easy2use API for obtaining information about a discord user, discord bot or  discord guild and their use for some purpose on websites!",
   "main": "./api/app.js",
   "scripts": {
